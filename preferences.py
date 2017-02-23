@@ -72,9 +72,9 @@ class Preferences(Toplevel):
                         'figure': {'titlesize': np.arange(0, 51, 1),
                                    'dpi': np.arange(10, 510, 10)},
                         'lines': {'markeredgewidth': [float_format % i for i in np.arange(0, 10.1, 0.1)],
-                                  'dash_jointstyle': ['miter', 'round', 'bevel'],
+                                  'dash_joinstyle': ['miter', 'round', 'bevel'],
                                   'dash_capstyle': ['butt', 'round', 'projecting'],
-                                  'solid_jointstyle': ['miter','round','bevel'],
+                                  'solid_joinstyle': ['miter','round','bevel'],
                                   'solid_capstyle': ['butt', 'round', 'projecting'],
                                   'antialiased': ['True', 'False']},
                         'markers': {'fillstyle': ['full', 'left', 'right', 'bottom', 'top', 'none']}

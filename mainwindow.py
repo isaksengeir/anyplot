@@ -116,7 +116,6 @@ class MainWindow(Frame):
                     setting = trans_int[setting]
                 if setting == 'False' or setting == 'True':
                     setting = trans_int[setting]
-
                 rcparams['%s.%s' % (l1, l2)] = setting
 
         matplotlib.rcParams.update(rcparams)
@@ -164,14 +163,13 @@ class MainWindow(Frame):
                                     'borderpad': 0.5,
                                     'shadow': 'True',
                                     'framealpha': 0,
-                                    'frameon': 'True',
-                                    'isaxes': 'True'},
-                         'figure': {'titlesize': 'None',
+                                    'frameon': 'True'},
+                         'figure': {'titlesize': 'large',
                                     'dpi': 100},
                          'lines': {'markeredgewidth': 0.5,
-                                   'dash_jointstyle': 'miter',
+                                   'dash_joinstyle': 'miter',
                                    'dash_capstyle': 'butt',
-                                   'solid_jointstyle': 'miter',
+                                   'solid_joinstyle': 'miter',
                                    'solid_capstyle': 'projecting',
                                    'antialiased': 1},
                          'markers': {'fillstyle': 'full'}
