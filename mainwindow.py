@@ -961,6 +961,9 @@ class MainWindow(Frame):
             self.ax.plot(ind, y, ls=sel_lt, lw=lw, marker=sel_marker, ms=ms, color=sel_col, label=r'%s' % title)
             plt.xticks(ind, x)
 
+        #Make sure that ticks are place correctly:
+        self.ax.axes.set_xticklabels(x)
+
     def plot_y(self, title, sel_col, sel_lt, lw, sel_marker, ms):
         y = self.get_xyz(title)[1]
         ind = np.arange(len(y))
