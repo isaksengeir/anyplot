@@ -44,7 +44,7 @@ class Preferences(Toplevel):
         for font in sorted([f.name for f in matplotlib.font_manager.fontManager.ttflist]):
             if not font.startswith('.'):
                 if font not in fonts:
-                    fonts.append(font)
+                    fonts.append(str(font))
         fonts = sorted(fonts, key=str.lower)
 
         float_format= "%.1f"

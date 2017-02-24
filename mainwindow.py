@@ -58,6 +58,9 @@ class MainWindow(Frame):
         self.selected_y = StringVar()
         self.selected_z = StringVar()
 
+        #x-ticks to plot:
+        self.x_labels = set()
+
         self.plot_3d = False
         self.plot_grid = False
 
@@ -641,6 +644,9 @@ class MainWindow(Frame):
         if len(selections) < 1:
             return
 
+        #Clear X-tick labales
+        self.x_labels.clear()
+
         #Bar plot requires special handling, collect titles:
         titles = dict()
 
@@ -660,6 +666,8 @@ class MainWindow(Frame):
         else:
             self.ax = self.fig.add_subplot(111)
             self.ax.set_title(plot_title, fontweight='bold')
+            self.ax.get_yaxis().set_tick_params(which='both', direction='in')
+            self.ax.get_xaxis().set_tick_params(which='both', direction='in')
 
         if self.plot_grid:
             self.ax.grid(True)
@@ -813,7 +821,8 @@ class MainWindow(Frame):
             width = self.titles[title]['barsize']
             bartype = self.titles[title]['bartype']
             if 'color' not in self.titles[title].keys():
-                sel_col = self.ax._get_lines.color_cycle.next()
+                sel_col = self.ax._get_lines.prop_cycler.next()['color']
+                #sel_col = self.ax._get_lines.color_cycle.next()
             else:
                 sel_col = self.titles[title]['color']
 
@@ -958,9 +967,14 @@ class MainWindow(Frame):
             ind = np.arange(len(y))
             self.ax.plot(ind, y, ls=sel_lt, lw=lw, marker=sel_marker, ms=ms, color=sel_col, label=r'%s' % title)
             plt.xticks(ind, x)
+            return
 
+        for i in x:
+            self.x_labels.add(i)
+        print self.x_labels
         #Make sure that ticks are place correctly:
-        self.ax.axes.set_xticklabels(x)
+        self.ax.set_xticks(list(self.x_labels))
+        #plt.xticks(np.arange(len(self.x_labels)), self.x_labels)
 
     def plot_y(self, title, sel_col, sel_lt, lw, sel_marker, ms):
         y = self.get_xyz(title)[1]
