@@ -686,7 +686,7 @@ class MainWindow(Frame):
 
             #Line and marker settings for title:
             if 'color' not in self.titles[title].keys():
-                sel_col = self.ax._get_lines.color_cycle.next()
+                sel_col = self.ax._get_lines.prop_cycler.next()['color']
             else:
                 sel_col = self.titles[title]['color']
 
