@@ -973,7 +973,7 @@ class MainWindow(Frame):
             self.x_labels.add(i)
         print self.x_labels
         #Make sure that ticks are place correctly:
-        self.ax.set_xticks(list(self.x_labels))
+        #self.ax.set_xticks(list(self.x_labels))
         #plt.xticks(np.arange(len(self.x_labels)), self.x_labels)
 
     def plot_y(self, title, sel_col, sel_lt, lw, sel_marker, ms):
